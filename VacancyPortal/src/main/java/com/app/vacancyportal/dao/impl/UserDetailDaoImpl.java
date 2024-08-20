@@ -3,10 +3,10 @@ package com.app.vacancyportal.dao.impl;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
-import javax.transaction.Transaction;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.app.vacancyportal.dao.UserDao;
 import com.app.vacancyportal.dao.UserDetailDao;
@@ -27,6 +27,14 @@ public class UserDetailDaoImpl implements UserDetailDao {
 
 	private SessionFactory getSession() {
 		return HibernateUtil.getSessionFactory();
+	}
+
+	private void rollBackTransaction(Transaction transaction) {
+
+		if (transaction != null) {
+			transaction.rollback();
+		}
+
 	}
 
 	@Override
@@ -55,7 +63,15 @@ public class UserDetailDaoImpl implements UserDetailDao {
 
 	@Override
 	public UserDetail update(UserDetail userDetail) {
-		return null;
+		org.hibernate.Transaction transaction = null;
+		try (Session session = getSession().openSession()) {
+			transaction = session.beginTransaction();
+			session.update(userDetail);
+			transaction.commit();
+		} catch (Exception excp) {
+			rollBackTransaction(transaction);
+		}
+		return userDetail;
 	}
 
 	@Override

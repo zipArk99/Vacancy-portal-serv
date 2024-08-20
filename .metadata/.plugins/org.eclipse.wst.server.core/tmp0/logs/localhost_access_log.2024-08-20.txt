@@ -317,3 +317,15 @@
 0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:09:22 +0530] "GET /VacancyPortal/portal/userprofile HTTP/1.1" 200 2622
 0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:09:22 +0530] "GET /VacancyPortal/portal/... HTTP/1.1" 404 783
 0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:11:49 +0530] "GET /VacancyPortal/ HTTP/1.1" 200 3286
+127.0.0.1 - - [20/Aug/2024:18:12:13 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:12:14 +0530] "GET /VacancyPortal/ HTTP/1.1" 200 3286
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:12:58 +0530] "POST /VacancyPortal/user HTTP/1.1" 200 2730
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:10 +0530] "POST /VacancyPortal/user/userdetail HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:10 +0530] "GET /VacancyPortal/portal/dashboard HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:10 +0530] "GET /VacancyPortal/user/login HTTP/1.1" 200 2686
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:25 +0530] "POST /VacancyPortal/user/login HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:25 +0530] "GET /VacancyPortal/portal/dashboard HTTP/1.1" 200 1507
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:41 +0530] "GET /VacancyPortal/portal/userprofile HTTP/1.1" 200 2616
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:41 +0530] "GET /VacancyPortal/portal/... HTTP/1.1" 404 783
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:45 +0530] "GET /VacancyPortal/portal/userprofile HTTP/1.1" 200 2616
+0:0:0:0:0:0:0:1 - - [20/Aug/2024:18:13:45 +0530] "GET /VacancyPortal/portal/... HTTP/1.1" 404 783

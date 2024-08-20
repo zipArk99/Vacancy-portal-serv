@@ -22,8 +22,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
 	@Override
 	public UserDetail updateUserDetail(UserDetail userDetail) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDetail updatedUserDetail = userDetailDao.update(userDetail);
+		return updatedUserDetail;
 	}
 
 	@Override

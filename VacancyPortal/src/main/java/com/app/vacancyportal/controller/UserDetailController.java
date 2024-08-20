@@ -62,5 +62,10 @@ public class UserDetailController extends HttpServlet {
 			
 		}
 	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
 
 }

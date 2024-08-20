@@ -1,0 +1,14 @@
+package com.app.vacancyportal.controller;
+
+import javax.servlet.http.HttpServlet;
+
+
+import com.app.vacancyportal.service.UserDetailService;
+
+public class UpdateUserDetailController extends HttpServlet {
+UserDetailService userDetailService;
+
+public UpdateUserDetailController() {
+	userDetailDao = UserDe
+}
+}
