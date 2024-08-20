@@ -1,0 +1,6 @@
+package com.app.vacancyportal.dao;
+
+public interface RegistrationDao {
+	
+
+}

@@ -1,0 +1,118 @@
+package com.app.vacancyportal.entity;
+
+import java.io.Serializable;
+//Util imports
+import java.util.Date;
+
+//JPA Imports
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+//Custom annotation imports
+import com.app.vacancyportal.customannotation.MatchPassword;
+
+
+@Entity
+@Table(name = "registration")
+@MatchPassword
+public class User implements Serializable {
+
+	@Id
+	@Column(name = "email_id")
+	@NotEmpty(message = "Email is empty !")
+	private String email;
+
+	@Column(name = "password")
+	private String hashPassword;
+
+	@NotEmpty(message = "Password is empty !")
+	@Size(min = 6, max = 16, message = "Password should be as per condition")
+	@Transient
+	private String password;
+
+	@Transient
+	private String confirmPassword;
+
+	@Column(name = "created_at")
+	private Date createdAt;
+
+	@Column(name = "updated_at")
+	private Date updatedAt;
+
+	@Column(name = "role_id")
+	private int roleId;
+
+	public User() {
+
+	}
+
+	public String getHashPassword() {
+		return hashPassword;
+	}
+
+	public void setHashPassword(String hashPassword) {
+		this.hashPassword = hashPassword;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", hashPassword=" + hashPassword + ", password=" + password
+				+ ", confirmPassword=" + confirmPassword + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ ", roleId=" + roleId + "]";
+	}
+
+}

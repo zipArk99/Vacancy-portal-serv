@@ -1,0 +1,36 @@
+package com.app.vacancyportal.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.vacancyportal.dao.AuthenticationDao;
+import com.app.vacancyportal.dao.impl.AuthenticationDaoImpl;
+import com.app.vacancyportal.entity.Registration;
+
+public class AuthenticationController extends HttpServlet {
+	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	AuthenticationDao authenticationDao = new AuthenticationDaoImpl();
+	
+	Registration reg =new  Registration();
+	reg.setEmail("kaj@gmail.com");
+	reg.setPassword("passs");
+	reg.setRoleId(1);
+	authenticationDao.RegisterUser());
+	
+	
+	}
+
+}

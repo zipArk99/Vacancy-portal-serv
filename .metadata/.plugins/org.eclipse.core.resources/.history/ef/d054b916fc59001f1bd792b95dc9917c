@@ -1,0 +1,15 @@
+package com.app.vacancyportal.entity;
+
+enum Roles{
+	NORMAL_USER,
+	ADMIN
+}
+
+
+public class Role {
+	
+	private int id;
+	private Roles Role;
+	
+
+}

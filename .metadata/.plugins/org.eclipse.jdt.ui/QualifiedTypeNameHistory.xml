@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.Configuration"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
+    <fullyQualifiedTypeName name="javax.servlet.Registration"/>
+    <fullyQualifiedTypeName name="javax.servlet.Registration.Dynamic"/>
+    <fullyQualifiedTypeName name="org.hibernate.service.ServiceRegistry"/>
+    <fullyQualifiedTypeName name="org.hibernate.boot.registry.StandardServiceRegistry"/>
+    <fullyQualifiedTypeName name="org.hibernate.boot.registry.StandardServiceRegistryBuilder"/>
+    <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.model.Login"/>
+    <fullyQualifiedTypeName name="jakarta.transaction.Transaction"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.Role"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.Vacancy"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.ProfilePicture"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.AuthenticationDao"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.impl.AuthenticationDaoImpl"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.util.HibernateUtil"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.Environment"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.Registration"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.impl.UserDaoImpl"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserService"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.service.impl.UserServiceImpl"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserServiceFactory"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.User"/>
+    <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDao"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserDaoFactory"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserDetailService"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDetailDao"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.impl.UserDetailDaoImpl"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.UserDetail"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.exception.UserNotFoundException"/>
+</qualifiedTypeNameHistroy>

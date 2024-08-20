@@ -1,0 +1,11 @@
+package com.app.vacancyportal.service;
+
+import com.app.vacancyportal.entity.User;
+import com.app.vacancyportal.model.Login;
+
+public interface UserService {
+	
+	void registerUser(User user);
+	void loginUser(Login login);
+
+}

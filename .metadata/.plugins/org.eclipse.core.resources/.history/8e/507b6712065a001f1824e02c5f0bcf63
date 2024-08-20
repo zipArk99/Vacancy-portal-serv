@@ -1,0 +1,9 @@
+package com.app.vacancyportal.model;
+
+public class Login {
+	final private String email;
+	final private String password;
+	
+	
+
+}

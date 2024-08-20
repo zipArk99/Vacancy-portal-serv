@@ -1,0 +1,10 @@
+package com.app.vacancyportal.dao;
+
+import com.app.vacancyportal.entity.Registration;
+import com.app.vacancyportal.entity.UserDetail;
+import com.app.vacancyportal.model.Login;
+
+public interface RegistrationDao {
+	public void  addUser(Registration registration);
+	public void deleteUser(String email);
+}

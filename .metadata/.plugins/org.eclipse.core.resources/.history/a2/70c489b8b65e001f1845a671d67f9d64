@@ -1,0 +1,18 @@
+package com.app.vacancyportal.service.impl;
+
+import com.app.vacancyportal.entity.UserDetail;
+import com.app.vacancyportal.service.UserDetailService;
+
+public class UserDetailServiceImpl implements UserDetailService {
+
+	@Override
+	public UserDetail addUserDetail(UserDetail userDetail) {
+	}
+
+	@Override
+	public UserDetail updateUserDetail(UserDetail userDetail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.app.vacancyportal.dao;
+
+import com.app.vacancyportal.entity.Registration;
+import com.app.vacancyportal.model.Login;
+
+public interface AuthenticationDao {
+	void RegisterUser(Registration registration);
+	void loginUser(Login login);
+	
+
+}

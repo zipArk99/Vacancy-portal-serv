@@ -1,0 +1,17 @@
+1723547162654	Copy file
+1723547166786	Delete element
+1723547296637	Delete element
+1723547310455	Delete element
+1723548634240	Delete element
+1723551224004	Rename resource 'NewFile.cfg.xml'
+1723612122230	Rename package 'com.app.vacancyportal.repo'
+1723616559820	Rename compilation unit 'RegistrationDao.java'
+1723616624999	Rename type 'BasicDao'
+1723616880090	Rename compilation unit 'RegistrationDao.java'
+1723617556644	Delete element
+1723629629406	Move 'header.jsp' to 'webapp'
+1723630986976	Rename type 'AuthenticationDao'
+1723633308801	Rename type 'Registration'
+1723633355606	Rename type 'RegistrationDao'
+1723633381845	Rename type 'AuthenticationDaoImpl'
+1723633470790	Rename type 'AuthenticationController'

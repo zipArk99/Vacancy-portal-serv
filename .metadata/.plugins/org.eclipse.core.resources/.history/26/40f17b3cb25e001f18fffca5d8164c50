@@ -1,0 +1,66 @@
+package com.app.vacancyportal.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.HashMap;
+import java.util.Set;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.vacancyportal.entity.User;
+import com.app.vacancyportal.exception.UserAlreadyRegisteredException;
+import com.app.vacancyportal.exception.UserRegistrationException;
+import com.app.vacancyportal.factory.UserServiceFactory;
+import com.app.vacancyportal.service.UserService;
+import com.app.vacancyportal.util.formvalidation.BasicFormValidation;
+
+public class UserController extends HttpServlet {
+
+	private UserService userService;
+	private BasicFormValidation<User> basicFormValidation;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserController() {
+		userService = UserServiceFactory.createUserService();
+		basicFormValidation = new BasicFormValidation<User>();
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		User user = new User();
+		user.setEmail(req.getParameter("email"));
+		user.setPassword(req.getParameter("password"));
+		user.setConfirmPassword(req.getParameter("confirmpassword"));
+
+		HashMap<String, String> validationResponse = basicFormValidation.checkValidations(user);
+		if (validationResponse.isEmpty()) {
+			try {
+				userService.registerUser(user);
+				req.setAttribute("userEmail", user.getEmail());
+				req.getRequestDispatcher("/userdetail_form.jsp").forward(req, resp);
+			} catch (UserAlreadyRegisteredException e) {
+				System.out.println("error occured::" + e.getMessage());
+				resp.getWriter().print("User Already Registered");
+			} catch (UserRegistrationException regExc) {
+				System.out.println("Registration Exception occured");
+			}
+
+		} else {
+			System.out.println(validationResponse);
+			req.setAttribute("userValidation", validationResponse);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+			dispatcher.forward(req, resp);
+		}
+	}
+}

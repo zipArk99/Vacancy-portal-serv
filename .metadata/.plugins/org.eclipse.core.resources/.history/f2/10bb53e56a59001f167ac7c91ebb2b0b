@@ -1,0 +1,5 @@
+package com.app.vacancyportal.entity;
+
+public class UserDetail {
+
+}

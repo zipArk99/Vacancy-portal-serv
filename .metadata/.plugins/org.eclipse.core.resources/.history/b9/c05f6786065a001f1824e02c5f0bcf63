@@ -1,0 +1,5 @@
+package com.app.vacancyportal.dao.impl;
+
+public class AuthenticationDaoImpl {
+
+}

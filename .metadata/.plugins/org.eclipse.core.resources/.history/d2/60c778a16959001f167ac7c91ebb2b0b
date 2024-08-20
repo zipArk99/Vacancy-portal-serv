@@ -1,0 +1,14 @@
+package com.app.vacancyportal.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name ="registration")
+public class Registration {
+	
+	private String email;
+	private String password;
+	private int roleId;
+
+}

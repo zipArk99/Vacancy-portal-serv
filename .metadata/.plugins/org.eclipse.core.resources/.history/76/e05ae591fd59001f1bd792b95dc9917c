@@ -1,0 +1,23 @@
+package com.app.vacancyportal.entity;
+
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="vacancies")
+public class Vacancy {
+
+	
+	private int vacancyId;
+	private String vacancyTitle;
+	private String vacancyExperience;
+	private int vacancySalary;
+	private	int vacancyNumberOfOpening;
+	private Date createdAt;
+	private Date updatedAt;
+	
+	
+	
+}
