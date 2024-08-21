@@ -32,7 +32,16 @@ body, html {
 <body>
 <body>
 <%@ include file="header.jsp" %>
-<form action="/VacancyPortal/portal/updateprofile" method="POST">
+<form action="<c:choose>
+<c:when test="${param.isAdmin}">
+	<c:out value="/VacancyPortal/portal/usermanagement"></c:out>
+</c:when>
+<c:otherwise>
+
+<c:out value="/VacancyPortal/portal/updateprofile"></c:out>
+</c:otherwise>
+
+</c:choose>" method="POST">
 
 	<div class="container">
 		<div class="card" style="width: 15rem;">

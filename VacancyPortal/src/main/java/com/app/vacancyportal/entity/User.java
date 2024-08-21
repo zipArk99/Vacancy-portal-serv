@@ -4,10 +4,13 @@ import java.io.Serializable;
 //Util imports
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 //JPA Imports
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -22,6 +25,11 @@ import com.app.vacancyportal.customannotation.MatchPassword;
 @Table(name = "registration")
 @MatchPassword
 public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "email_id")
@@ -47,6 +55,9 @@ public class User implements Serializable {
 
 	@Column(name = "role_id")
 	private int roleId;
+	
+	@OneToOne(mappedBy = "user" , fetch = FetchType.LAZY, cascade = CascadeType.REMOVE	)
+	private UserDetail userDetail;
 
 	public User() {
 
@@ -106,6 +117,16 @@ public class User implements Serializable {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
 	}
 
 	@Override

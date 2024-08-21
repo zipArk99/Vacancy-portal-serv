@@ -28,16 +28,17 @@ public class UserManagementFilter extends HttpFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		HttpSession session = req.getSession(false);
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("user");
 
-		if (!Objects.isNull(session)) {
-			User user = (User) session.getAttribute("user");
+		if (!Objects.isNull(user)) {
+
 			if (user.getRoleId() == 1) {
 				chain.doFilter(request, response);
-			}else {
+			} else {
 				PrintWriter out = resp.getWriter();
 				resp.setContentType("text/html");
-				
+
 				out.print("<h2>YOU DON'T HAVE PERMISSION TO MANAGE USERS</h2>");
 				out.print("<button type=\"button\" name=\"back\" onclick=\"history.back()\">back</button>");
 			}

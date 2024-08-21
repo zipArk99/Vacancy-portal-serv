@@ -1,5 +1,6 @@
 package com.app.vacancyportal.factory;
 
+import com.app.vacancyportal.dao.impl.ProfilePictureDaoImpl;
 import com.app.vacancyportal.dao.impl.UserDetailDaoImpl;
 import com.app.vacancyportal.service.UserDetailService;
 import com.app.vacancyportal.service.impl.UserDetailServiceImpl;

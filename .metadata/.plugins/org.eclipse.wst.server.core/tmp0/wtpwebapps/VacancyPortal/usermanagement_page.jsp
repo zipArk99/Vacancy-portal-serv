@@ -116,6 +116,7 @@ body {
 			<div
 				class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
 				<c:forEach var="user" items="${requestScope.usersDetail}">
+
 					<div class="col mb-3">
 						<div class="card">
 							<img src="https://www.bootdey.com/image/340x120/FFB6C1/000000"
@@ -143,15 +144,30 @@ body {
 								</p>
 							</div>
 							<div class="card-footer">
-								<button class="btn bg-orange has-icon btn-block" type="button"
-									style="background-color: orange;">
-									<i class="material-icons">Edit User</i>
-								</button>
+								<form action="/VacancyPortal/updateuserdetail_page.jsp" method="POST">
+									<input type="hidden" name="isAdmin" value = "true"> 
+									<input type="hidden" name="email"
+										value="${user.getUser().email}" /> <input type="hidden"
+										name="fname" value="${user.firstName}" /> <input
+										type="hidden" name="lname" value="${user.lastName}" /> <input
+										type="hidden" name="role" value="${user.getUser().roleId}" />
+									<button class="btn bg-orange has-icon btn-block" type="submit"
+										style="background-color: orange;">
+										<i class="material-icons">Edit User</i>
+									</button>
+								</form>
 								&nbsp; &nbsp;
-								<button class="btn  bg-red has-icon btn-block" type="button"
-									style="background-color: orange;">
-									<i class="material-icons">Delete User</i>
-								</button>
+
+
+								<form action="/VacancyPortal/portal/user/delete" method="POST">
+									<input type="hidden" name="email"
+										value="${user.getUser().email}" />
+									<button class="btn  bg-red has-icon btn-block" type="submit"
+										style="background-color: orange;">
+										<i class="material-icons">Delete User</i>
+									</button>
+
+								</form>
 
 							</div>
 						</div>

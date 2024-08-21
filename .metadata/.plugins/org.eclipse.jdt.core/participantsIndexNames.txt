@@ -1,7 +1,3 @@
 INDEX VERSION 1.134
-D:\Java Development\Jsp Servlets Job Vacancy Portal Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2435961475.index
-\VacancyPortal\target\generated-sources\annotations
-D:\Java Development\Jsp Servlets Job Vacancy Portal Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1587125940.index
-\VacancyPortal\src\main\java
-D:\Java Development\Jsp Servlets Job Vacancy Portal Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3800134480.index
+A:\TechForce\Vacancy-portal-serv\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2435961475.index
 \VacancyPortal\src\main\java

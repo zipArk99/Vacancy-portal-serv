@@ -14,5 +14,6 @@ public interface UserService {
 	void registerUser(User user) throws UserAlreadyRegisteredException, UserRegistrationException;
 	User loginUser(Login login) throws UserNotFoundException, NoSuchAlgorithmException, InvalidKeySpecException;
 	void updatePassword(String oldPassword,String newPassword);
+	boolean removeUser	(String email);
 
 }

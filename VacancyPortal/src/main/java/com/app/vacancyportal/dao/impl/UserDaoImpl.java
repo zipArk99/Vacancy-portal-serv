@@ -53,8 +53,21 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(String email) {
-		// TODO Auto-generated method stub
+	public boolean deleteUser(String email) {
+		Transaction transaction = null;
+		try (Session session = getSession().openSession()) {
+			transaction = session.beginTransaction();
+			User user = fetchUserByEmailId(email);
+			session.remove(user);
+			transaction.commit();	
+			return true;
+		} catch (Exception excp) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			excp.printStackTrace();
+		}
+		return false;
 
 	}
 
@@ -78,11 +91,11 @@ public class UserDaoImpl implements UserDao {
 	public User fetchUserByEmailId(String email) throws UserNotFoundException {
 		User result;
 		try (Session session = getSession().openSession()) {
-			result  = session.get(User.class, email);
-			if (result==null) {
+			result = session.get(User.class, email);
+			if (result == null) {
 				throw new UserNotFoundException("User not found");
 			}
-			return result;		
+			return result;
 		}
 	}
 }

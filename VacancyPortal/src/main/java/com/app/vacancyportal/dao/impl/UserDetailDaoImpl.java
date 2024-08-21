@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.app.vacancyportal.controller.UpdateUserDetailController;
+import com.app.vacancyportal.dao.ProfilePictureDao;
 import com.app.vacancyportal.dao.UserDao;
 import com.app.vacancyportal.dao.UserDetailDao;
 import com.app.vacancyportal.entity.ProfilePicture;
@@ -21,9 +22,11 @@ import com.app.vacancyportal.util.HibernateUtil;
 public class UserDetailDaoImpl implements UserDetailDao {
 
 	UserDao userDao;
+	ProfilePictureDao profilePictureDao;
 
 	public UserDetailDaoImpl() {
 		userDao = UserDaoFactory.createUserDao();
+		profilePictureDao = new ProfilePictureDaoImpl();
 	}
 
 	private SessionFactory getSession() {
@@ -44,10 +47,22 @@ public class UserDetailDaoImpl implements UserDetailDao {
 		UserDetail newUserDetail = null;
 		try (Session session = getSession().openSession()) {
 			transaction = session.beginTransaction();
+			
+			//fetching user by email
 			User user = userDao.fetchUserByEmailId(userDetail.getUser().getEmail());
+			
+			//saving profile picture
+			ProfilePicture profilePicture = new ProfilePicture();
+			profilePicture.setUser(user);
+			profilePicture.setProfilePath(userDetail.getProfilePicture().getProfilePath());
+			ProfilePicture uploadedProfilePicture = profilePictureDao.add(profilePicture);
+			
+			//saving user detail
 			userDetail.setUser(user);
-			newUserDetail = (UserDetail) session.save(userDetail);
-			newUserDetail.getUser().setHashPassword("");
+			userDetail.setProfilePicture(uploadedProfilePicture);
+			userDetail.getProfilePicture().setUser(user);
+			session.save(userDetail);
+			// newUserDetail.getUser().setHashPassword("");
 			transaction.commit();
 		} catch (Exception excp) {
 			if (excp instanceof UserNotFoundException) {
@@ -81,7 +96,8 @@ public class UserDetailDaoImpl implements UserDetailDao {
 	public List<UserDetail> fetchUsers() {
 		List<UserDetail> usersDetail = null;
 		try (Session session = getSession().openSession()) {
-			usersDetail = session.createQuery("SELECT ud FROM UserDetail ud WHERE ud.user.email NOT IN (SELECT u.email FROM User u WHERE u.roleId=1)")
+			usersDetail = session.createQuery(
+					"SELECT ud FROM UserDetail ud WHERE ud.user.email NOT IN (SELECT u.email FROM User u WHERE u.roleId=1)")
 					.list();
 			System.out.println(usersDetail.size());
 			// usersDetail.stream().filter(user->user.)

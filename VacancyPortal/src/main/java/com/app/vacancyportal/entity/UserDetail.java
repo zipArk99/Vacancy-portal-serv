@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,12 +20,18 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "userdetail")
 public class UserDetail implements Serializable {
 
-	@OneToOne
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@OneToOne(cascade =CascadeType.REMOVE)
 	@Id
 	@JoinColumn(name = "registration_email")
 	private User user;
@@ -36,8 +44,10 @@ public class UserDetail implements Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Transient
-	private List<ProfilePicture> profilePicture;
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name ="selected_profile_pic_id")
+	private ProfilePicture profilePicture;
+	
 	@Column(name = "created_at")
 	private Date createdAt;
 	@Column(name = "updated_at")
@@ -79,11 +89,12 @@ public class UserDetail implements Serializable {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<ProfilePicture> getProfilePicture() {
+	
+	public ProfilePicture getProfilePicture() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(List<ProfilePicture> profilePicture) {
+	public void setProfilePicture(ProfilePicture profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 

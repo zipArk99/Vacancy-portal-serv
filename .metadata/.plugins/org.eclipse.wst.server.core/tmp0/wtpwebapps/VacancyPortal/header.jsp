@@ -23,6 +23,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link"
+					href="#">Register</a></li>
+					<li class="nav-item active"><a class="nav-link"
+					href="#">Login</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="/VacancyPortal/portal/dashboard">Home <span
 						class="sr-only">(current)</span></a></li>

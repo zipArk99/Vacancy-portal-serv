@@ -1,6 +1,7 @@
 package com.app.vacancyportal.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -33,6 +34,8 @@ public class UserLoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
 		System.out.println("user login called");
 		Login loginInfo = new Login(req.getParameter("lEmail"), req.getParameter("lPassword"));
 		RequestDispatcher dispatcher;
@@ -46,8 +49,10 @@ public class UserLoginController extends HttpServlet {
 					session.setAttribute("user", user);
 					resp.sendRedirect(req.getContextPath()+"/portal/dashboard");
 				} catch (InvalidUserCredentialsException excp) {
+					out.print("<h2>Wrong Login Credentials, Please Try Again</h2>");
 					excp.printStackTrace();
 				} catch (UserNotFoundException excp) {
+					out.print("<h2>User not Found, please first register yourself</h2>");
 					excp.printStackTrace();
 				}
 			} else {

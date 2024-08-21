@@ -10,7 +10,7 @@ import com.app.vacancyportal.model.Login;
 public interface UserDao {
 	public void addUser(User registration) throws UserAlreadyRegisteredException, UserRegistrationException ;
 
-	public void deleteUser(String email);
+	public boolean deleteUser(String email);
 
 	boolean ifUserRegistered(String email) throws UserRegistrationException;
 

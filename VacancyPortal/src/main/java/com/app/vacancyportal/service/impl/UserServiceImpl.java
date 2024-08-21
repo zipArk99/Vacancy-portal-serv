@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public boolean removeUser(String email) {
+		return userDao.deleteUser(email);
+	}
+
 }

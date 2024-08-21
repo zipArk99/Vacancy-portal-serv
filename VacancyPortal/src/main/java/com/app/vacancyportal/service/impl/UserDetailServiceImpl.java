@@ -2,7 +2,9 @@ package com.app.vacancyportal.service.impl;
 
 import java.util.List;
 
+import com.app.vacancyportal.dao.ProfilePictureDao;
 import com.app.vacancyportal.dao.UserDetailDao;
+import com.app.vacancyportal.entity.ProfilePicture;
 import com.app.vacancyportal.entity.UserDetail;
 import com.app.vacancyportal.exception.UserNotFoundException;
 import com.app.vacancyportal.service.UserDetailService;
@@ -19,7 +21,7 @@ public class UserDetailServiceImpl implements UserDetailService {
 
 	@Override
 	public UserDetail addUserDetail(UserDetail userDetail) throws UserNotFoundException {
-
+	
 		UserDetail newUserDetail = userDetailDao.add(userDetail);
 		return newUserDetail;
 	}
@@ -29,6 +31,7 @@ public class UserDetailServiceImpl implements UserDetailService {
 		userDetailDao.update(userDetail);
 		UserDetail updatedUserDetail = userDetailDao.fetchUser(userDetail.getUser().getEmail());
 		return updatedUserDetail;
+
 	}
 
 	@Override

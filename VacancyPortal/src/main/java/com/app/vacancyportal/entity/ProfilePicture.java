@@ -1,5 +1,6 @@
 package com.app.vacancyportal.entity;
 
+import java.io.Serializable;
 //Core Java Imports
 import java.util.Date;
 
@@ -9,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 //Hibernate Validation Imports
@@ -18,7 +21,7 @@ import lombok.Builder;
 
 @Entity
 @Table(name = "profilepicpath")
-public class ProfilePicture {
+public class ProfilePicture  implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +31,9 @@ public class ProfilePicture {
 	@Column(name = "profile_path")
 	private String profilePath;
 
-	@Column(name = "email_id")
-	private String userDetailId;
+	@ManyToOne
+	@JoinColumn(name ="email_id")
+	private User user;
 
 	@Column(name = "created_at")
 	private Date createdAt;
@@ -52,6 +56,8 @@ public class ProfilePicture {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	
 
 	public Date getUpdatedAt() {
 		return updatedAt;
@@ -60,5 +66,15 @@ public class ProfilePicture {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 
 }

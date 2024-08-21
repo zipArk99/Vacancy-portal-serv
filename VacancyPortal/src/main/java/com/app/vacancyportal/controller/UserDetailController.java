@@ -1,6 +1,7 @@
 package com.app.vacancyportal.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.app.vacancyportal.entity.ProfilePicture;
 import com.app.vacancyportal.entity.User;
 import com.app.vacancyportal.entity.UserDetail;
 import com.app.vacancyportal.exception.UserNotFoundException;
@@ -52,39 +54,43 @@ public class UserDetailController extends HttpServlet {
 
 	}
 
-	private boolean uploadProfile(InputStream inputStream, String path) {
-		
-		try {
-			FileOutputStream fileOutputStream = new FileOutputStream(path);
-			byte [] fileByte = new byte [inputStream.available()];
-			inputStream.read(fileByte);
-			fileOutputStream.write(fileByte);
-			fileOutputStream.close();
-						
-		} catch ( IOException |UncheckedIOException  e ) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+	private String uploadProfile(Part file, String fileName, String userEmail) throws IOException {
+		UUID uuid = UUID.randomUUID();
+		File folder = new File("A:/profilepictures/" + userEmail);
+		String path = "A:/profilepictures/" + userEmail;
+		OutputStream outputStream = null;
+		InputStream fileContent = file.getInputStream();
+		if (!folder.exists()) {
+			folder.mkdir();
 		}
-		
-		
-		/*
-		 * file = new File("/userprofile/"+userEmail+fileName+"__"+uuid.toString());
-		 * OutputStream outputStream = new FileOutputStream(file); byte [] byteFile =
-		 * new byte[inputStream.available()]; inputStream. outputStream.write();
-		 */
-		return false;
+		try {
+			outputStream = new FileOutputStream(new File(path + File.separator + fileName));
+			int read = 0;
+			while ((read = fileContent.read()) != -1) {
+				outputStream.write(read);
+			}
+
+			outputStream.flush();
+			fileContent.close();
+			outputStream.close();
+
+			return path + File.separator + fileName;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "";
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UserDetail userDetail = setUserDetailsWithRequestParam(req);
 		Part file = req.getPart("profile");
-		String path= req.getRealPath("profilepicture");
-		System.out.println(path);
-		System.out.println(file.getContentType());
-		System.out.println(file.getName());
-		System.out.println(file.getSubmittedFileName());
-		//uploadProfile(file.getInputStream(), path );
+		String fileName = file.getSubmittedFileName();
+		String uploadedFilePath = uploadProfile(file, fileName, userDetail.getUser().getEmail());
+		ProfilePicture profilePicture = new ProfilePicture();
+		profilePicture.setProfilePath(uploadedFilePath);
+		userDetail.setProfilePicture(profilePicture);
 
 		HashMap<String, String> validationResponse = basicFormValidation.checkValidations(userDetail);
 		try {
@@ -106,7 +112,5 @@ public class UserDetailController extends HttpServlet {
 
 		}
 	}
-
-	
 
 }
