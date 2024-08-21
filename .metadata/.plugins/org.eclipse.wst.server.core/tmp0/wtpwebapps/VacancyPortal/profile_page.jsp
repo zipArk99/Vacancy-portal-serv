@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,31 +27,52 @@ body, html {
 	align-items: center;
 	height: 93vh; /* Full viewport height */
 }
+
+.card-img-top {
+	height: 70px;
+	width: auto;
+	s max-width: 100%;
+	display: block;
+	object-fit: contain;
+}
 </style>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+	<%@ include file="header.jsp"%>
 	<div class="container">
 		<div class="card" style="width: 18rem;">
-			<img src="..." class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">UserProfile</h5>
+			<div class="card-body" style="background-color: green;">
+				<h5 class="card-title" style="color: white;">UserProfile</h5>
 			</div>
+
+			<img src="/VacancyPortal/src/main/webapp/user.png" class="card-img-top" alt="User Image" draggable="true">
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><b>Email:</b> <c:out value="${requestScope.email}"></c:out>  </li>
-				<li class="list-group-item"><b>First Name:</b> <c:out value="${requestScope.fname}"></c:out></li>
-				<li class="list-group-item"><b>Last Name:</b> <c:out value="${requestScope.lname}"></c:out></li>
-				<li class="list-group-item"><b>Role:</b><c:choose>
-				<c:when test="${requestScope.role==1}">
-				<c:out value="ADMIN"></c:out>
-				 </c:when>
-				<c:otherwise>
-				<c:out value="NORMAL"></c:out>
-				</c:otherwise>
-				</c:choose> </li>
+				<li class="list-group-item"><b>Email:</b> <c:out
+						value="${requestScope.email}"></c:out></li>
+				<li class="list-group-item"><b>First Name:</b> <c:out
+						value="${requestScope.fname}"></c:out></li>
+				<li class="list-group-item"><b>Last Name:</b> <c:out
+						value="${requestScope.lname}"></c:out></li>
+				<li class="list-group-item"><b>Role:</b> <c:choose>
+						<c:when test="${requestScope.role==1}">
+							<c:out value="ADMIN"></c:out>
+						</c:when>
+						<c:otherwise>
+							<c:out value="NORMAL"></c:out>
+						</c:otherwise>
+					</c:choose></li>
 			</ul>
+
+
 			<div class="card-body">
-				<a href="#" class="card-link">Edit User</a>
+				<form action="/VacancyPortal/updateuserdetail_page.jsp"
+					method="POST">
+					<input type="hidden" name="email" value="${requestScope.email}">
+					<input type="hidden" name="fname" value="${requestScope.fname }">
+					<input type="hidden" name="lname" value="${requestScope.lname}">
+					<input type="hidden" name="role" value="${requestScope.role}">
+					<input type="submit" value="Edit" class="btn btn-primary">
+				</form>
 			</div>
 		</div>
 	</div>

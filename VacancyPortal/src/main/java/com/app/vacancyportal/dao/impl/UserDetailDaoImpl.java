@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.app.vacancyportal.controller.UpdateUserDetailController;
 import com.app.vacancyportal.dao.UserDao;
 import com.app.vacancyportal.dao.UserDetailDao;
 import com.app.vacancyportal.entity.ProfilePicture;
@@ -64,20 +65,31 @@ public class UserDetailDaoImpl implements UserDetailDao {
 	@Override
 	public UserDetail update(UserDetail userDetail) {
 		org.hibernate.Transaction transaction = null;
+		UserDetail updatedUserDetail = null;
 		try (Session session = getSession().openSession()) {
 			transaction = session.beginTransaction();
 			session.update(userDetail);
 			transaction.commit();
 		} catch (Exception excp) {
+			System.out.println();
 			rollBackTransaction(transaction);
 		}
-		return userDetail;
+		return updatedUserDetail;
 	}
 
 	@Override
 	public List<UserDetail> fetchUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UserDetail> usersDetail = null;
+		try (Session session = getSession().openSession()) {
+			usersDetail = session.createQuery("SELECT ud FROM UserDetail ud WHERE ud.user.email NOT IN (SELECT u.email FROM User u WHERE u.roleId=1)")
+					.list();
+			System.out.println(usersDetail.size());
+			// usersDetail.stream().filter(user->user.)
+		} catch (Exception excp) {
+
+			excp.printStackTrace();
+		}
+		return usersDetail;
 	}
 
 	@Override
@@ -86,6 +98,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
 		try (Session session = getSession().openSession()) {
 
 			userDetail = (UserDetail) session.get(UserDetail.class, email);
+			userDetail.getUser().setHashPassword("");
 
 		} catch (Exception e) {
 

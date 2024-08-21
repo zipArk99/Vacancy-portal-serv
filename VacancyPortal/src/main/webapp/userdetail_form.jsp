@@ -12,7 +12,7 @@
 
 	<div
 		style="width: 30%; margin: auto; background-color: #aed6f1; padding: 20px;">
-		<form action="/VacancyPortal/user/userdetail" method="post">
+		<form action="/VacancyPortal/user/userdetail" method="post" enctype="multipart/form-data">
 			<h3>
 				<span style="color: #145a32"><b>V</b>acancy</span><span
 					style="color: #d35400;"><b>X</b></span> User Details

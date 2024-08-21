@@ -1,0 +1,29 @@
+package com.app.vacancyportal.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.app.vacancyportal.service.UserDetailService;
+
+public class UserManagementController extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final UserDetailService userDetailService;
+	
+	
+	public UserManagementController() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		
+	}
+}

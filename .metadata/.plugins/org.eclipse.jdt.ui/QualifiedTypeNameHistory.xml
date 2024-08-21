@@ -21,7 +21,6 @@
     <fullyQualifiedTypeName name="com.app.vacancyportal.entity.Role"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.entity.Vacancy"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.entity.ProfilePicture"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.AuthenticationDao"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.impl.AuthenticationDaoImpl"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
@@ -34,13 +33,21 @@
     <fullyQualifiedTypeName name="com.app.vacancyportal.service.impl.UserServiceImpl"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserServiceFactory"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.entity.User"/>
-    <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDao"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserDaoFactory"/>
-    <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserDetailService"/>
-    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDetailDao"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.impl.UserDetailDaoImpl"/>
-    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.UserDetail"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.exception.UserNotFoundException"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.Fetch"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.FetchMode"/>
+    <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="javax.transaction.Transaction"/>
+    <fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.entity.UserDetail"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDetailDao"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserDetailService"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserDetailServiceFactory"/>
 </qualifiedTypeNameHistroy>

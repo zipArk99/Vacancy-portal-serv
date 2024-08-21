@@ -1,9 +1,13 @@
 package com.app.vacancyportal.service.impl;
 
+import java.util.List;
+
 import com.app.vacancyportal.dao.UserDetailDao;
 import com.app.vacancyportal.entity.UserDetail;
 import com.app.vacancyportal.exception.UserNotFoundException;
 import com.app.vacancyportal.service.UserDetailService;
+
+import net.bytebuddy.asm.Advice.Return;
 
 public class UserDetailServiceImpl implements UserDetailService {
 
@@ -22,7 +26,8 @@ public class UserDetailServiceImpl implements UserDetailService {
 
 	@Override
 	public UserDetail updateUserDetail(UserDetail userDetail) {
-		UserDetail updatedUserDetail = userDetailDao.update(userDetail);
+		userDetailDao.update(userDetail);
+		UserDetail updatedUserDetail = userDetailDao.fetchUser(userDetail.getUser().getEmail());
 		return updatedUserDetail;
 	}
 
@@ -31,6 +36,12 @@ public class UserDetailServiceImpl implements UserDetailService {
 		UserDetail userDetail = userDetailDao.fetchUser(email);
 		userDetail.getUser().setHashPassword(email);
 		return userDetail;
-	}	
+	}
+
+	@Override
+	public List<UserDetail> fetchAllUsers() {
+		List<UserDetail> usersDetail = userDetailDao.fetchUsers();
+		return usersDetail;
+	}
 
 }

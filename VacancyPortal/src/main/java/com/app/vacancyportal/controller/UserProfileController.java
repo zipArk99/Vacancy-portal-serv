@@ -26,7 +26,13 @@ public class UserProfileController extends HttpServlet {
 	}
 
 	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		HttpSession session = req.getSession();
 		UserDetail userDetail = (UserDetail) session.getAttribute("userDetail");
 		if (userDetail == null) {

@@ -1,0 +1,7 @@
+package com.app.vacancyportal.controller;
+
+import javax.servlet.http.HttpServlet;
+
+public class UserManagementController extends HttpServlet{
+
+}

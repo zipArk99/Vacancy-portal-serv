@@ -49,19 +49,49 @@
 		<servlet-name>dashboardcontroller</servlet-name>
 		<url-pattern>/portal/dashboard</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>userprofile</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.UserProfileController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userprofile</servlet-name>
+		<url-pattern>/portal/userprofile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateprofile</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.UserProfileUpdateController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateprofile</servlet-name>
+		<url-pattern>/portal/updateprofile</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
-	<servlet-name>userprofile</servlet-name>
-	<servlet-class>com.app.vacancyportal.controller.UserProfileController</servlet-class>
+	<servlet-name>usermanager</servlet-name>
+	<servlet-class>com.app.vacancyportal.controller.UserManagementController</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-	<servlet-name>userprofile</servlet-name>
-	<url-pattern>/portal/userprofile</url-pattern>
+	<servlet-name>usermanager</servlet-name>
+	<url-pattern>/portal/usermanagement</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>logout</servlet-name>
+	<servlet-class>com.app.vacancyportal.controller.LogoutController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>logout</servlet-name>
+	<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 
 	<session-config>
-		<session-timeout>30</session-timeout>
+		<session-timeout>1</session-timeout>
 	</session-config>
 
 	<filter>
@@ -73,6 +103,19 @@
 		<filter-name>DashboardFilter</filter-name>
 		<url-pattern>/portal/dashboard</url-pattern>
 	</filter-mapping>
+	
+
+	<filter>
+		<description>
+		</description>
+		<display-name>UserManagementFilter</display-name>
+		<filter-name>UserManagementFilter</filter-name>
+		<filter-class>com.app.vacancyportal.security.UserManagementFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserManagementFilter</filter-name>
+		<url-pattern>/portal/usermanagement/*</url-pattern>
+	</filter-mapping>
 
 	<jsp-config>
 		<jsp-property-group>
@@ -80,11 +123,11 @@
 			<el-ignored>false</el-ignored>
 		</jsp-property-group>
 	</jsp-config>
-	
+
 	<error-page>
-	<exception-type>java.lang.Exception</exception-type>
-	<location>/globalerror_page.jsp</location>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/globalerror_page.jsp</location>
 	</error-page>
-	
+
 
 </web-app>

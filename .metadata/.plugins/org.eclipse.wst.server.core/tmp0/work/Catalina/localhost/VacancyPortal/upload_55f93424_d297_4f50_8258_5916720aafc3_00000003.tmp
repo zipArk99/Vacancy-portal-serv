@@ -1,0 +1,88 @@
+JAVA NIO IMP POINTS
+
+------------------------------------------------
+NIO is buffer-oriented, using buffers for efficient data handling.
+Supports both blocking and non-blocking I/O operations.
+Offers channels for bidirectional communication with I/O sources.
+Provides higher performance and scalability compared to traditional IO.
+-------------------------------------------------
+
+
+
+Java nio package (java.nio.file.Paths)
+-> Paths is used to give file and folder path, we can give multiple file path at same time using get() method
+
+
+Java nio package(java.nio.file.Files)
+-> This is used to perform all important file operations using (Files)
+File Creation and Deletion:
+Create new files or directories.   
+Delete existing files or directories. 
+  
+File Copying and Moving:
+Copy files or directories to different locations.   
+Move files or directories within the same file system.
+
+File Reading and Writing:
+Read the contents of a file into a byte array or a stream.   
+Write data to a file from a byte array or a stream.   
+
+File Attributes and Metadata:
+Retrieve information about file attributes like creation time, size, permissions, etc.   
+Set or modify file attributes.
+
+Directory Listing and Traversal:
+List files and subdirectories within a directory.
+Recursively traverse directory structures.
+
+File Searching and Filtering:
+Find files matching specific criteria using patterns or filters.
+
+File Locking and Sharing:
+Implement file locking mechanisms for concurrent access.
+Control file sharing behavior.
+
+
+
+
+DIFFERENT WAYS TO WRITE IN FILE USING JAVA.NIO
+
+METHOD1. Using Files.write() -> This is the simplest one out of all
+
+public class WriteWithFiles {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get("output.txt");
+        List<String> lines = List.of("Line 1", "Line 2", "Line 3");
+        Files.write(path, lines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
+}
+
+
+
+Method 2: Using FileChannel and ByteBuffer 
+public class WriteWithChannelBuffer {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get("output.txt");
+        String content = "Hello, World!";
+
+        try (FileChannel channel = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+            ByteBuffer buffer = ByteBuffer.wrap(content.getBytes());   
+            channel.write(buffer);
+        }
+    }
+}
+
+
+INTERNAL WORKING OF FILE CHANNEL
+
+Internal Workflow
+When you create a FileChannel using FileChannel.open(), the following steps occur:
+
+File Descriptor Acquisition: The JVM requests a file descriptor from the operating system for the specified file.
+Channel Creation: A FileChannel instance is created, holding a reference to the obtained file descriptor.
+Buffer Allocation: You create a ByteBuffer to hold the data you want to write or read.
+Data Transfer: When you call channel.write(byteBuffer), the following happens:
+The FileChannel interacts with the operating system using the file descriptor to initiate a write operation.
+The operating system typically employs buffering mechanisms to improve performance. Data from the ByteBuffer is copied into the operating system's buffer.
+The operating system schedules the write operation to the physical disk when appropriate.
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>Archetype Created Web Application</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<servlet>
+		<servlet-name>user</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.UserController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>user</servlet-name>
+		<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>userlogin</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.UserLoginController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userlogin</servlet-name>
+		<url-pattern>/user/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>userdetail</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.UserDetailController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userdetail</servlet-name>
+		<url-pattern>/user/userdetail</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>dashboardcontroller</servlet-name>
+		<servlet-class>com.app.vacancyportal.controller.DashboardController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dashboardcontroller</servlet-name>
+		<url-pattern>/portal/dashboard</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>userprofile</servlet-name>
+	<servlet-class>com.app.vacancyportal.controller.UserProfileController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>userprofile</servlet-name>
+	<url-pattern>/portal/userprofile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>updateportal</servlet-name>
+	<servlet-class>com.app.vacancyportal.controller.UserProfileUpdateController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name></servlet-name>
+	<url-pattern>/portal/updateprofile</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<filter>
+		<display-name>DashboardFilter</display-name>
+		<filter-name>DashboardFilter</filter-name>
+		<filter-class>com.app.vacancyportal.security.DashboardFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>DashboardFilter</filter-name>
+		<url-pattern>/portal/dashboard</url-pattern>
+	</filter-mapping>
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>false</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+	
+	<error-page>
+	<exception-type>java.lang.Exception</exception-type>
+	<location>/globalerror_page.jsp</location>
+	</error-page>
+	
+
+</web-app>
