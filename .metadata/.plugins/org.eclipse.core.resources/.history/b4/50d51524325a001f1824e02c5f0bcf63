@@ -1,7 +1,0 @@
-package com.app.vacancyportal.factory;
-
-public class UserServiceFactory {
-	
-	private UserService userService
-
-}

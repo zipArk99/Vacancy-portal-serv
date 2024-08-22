@@ -46,6 +46,8 @@ public class UserProfileController extends HttpServlet {
 		req.setAttribute("fname", userDetail.getFirstName());
 		req.setAttribute("lname", userDetail.getLastName());
 		req.setAttribute("role", userDetail.getUser().getRoleId());
+		req.setAttribute("profileId", userDetail.getProfilePicture().getPictureId());
+		req.setAttribute("profile", userDetail.getProfilePicture().getProfilePath());
 		req.getRequestDispatcher("/profile_page.jsp").forward(req, resp);
 
 	}

@@ -44,8 +44,7 @@ body, html {
 			<div class="card-body" style="background-color: green;">
 				<h5 class="card-title" style="color: white;">UserProfile</h5>
 			</div>
-
-			<img src="/VacancyPortal/src/main/webapp/user.png" class="card-img-top" alt="User Image" draggable="true">
+			<img src="<%=request.getContextPath()%>/${requestScope.profile}">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><b>Email:</b> <c:out
 						value="${requestScope.email}"></c:out></li>
@@ -71,6 +70,8 @@ body, html {
 					<input type="hidden" name="fname" value="${requestScope.fname }">
 					<input type="hidden" name="lname" value="${requestScope.lname}">
 					<input type="hidden" name="role" value="${requestScope.role}">
+					<input type="hidden" name="profId" value="${requestScope.profileId}">
+					<input type="hidden" name="profile" value="${requestScope.profile}">
 					<input type="submit" value="Edit" class="btn btn-primary">
 				</form>
 			</div>

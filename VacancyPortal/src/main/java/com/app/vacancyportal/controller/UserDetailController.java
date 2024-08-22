@@ -56,25 +56,26 @@ public class UserDetailController extends HttpServlet {
 
 	private String uploadProfile(Part file, String fileName, String userEmail) throws IOException {
 		UUID uuid = UUID.randomUUID();
-		File folder = new File("A:/profilepictures/" + userEmail);
-		String path = "A:/profilepictures/" + userEmail;
+		File folder = new File(getServletContext().getRealPath(""));
+		System.out.println(getServletContext().getRealPath("/"));
+		String path = "D:/Java Development/Vac portal v2/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
+				+ File.separator + fileName;
 		OutputStream outputStream = null;
 		InputStream fileContent = file.getInputStream();
-		if (!folder.exists()) {
-			folder.mkdir();
-		}
+		/*
+		 * if (!folder.exists()) { folder.mkdir(); }
+		 */
 		try {
-			outputStream = new FileOutputStream(new File(path + File.separator + fileName));
+			outputStream = new FileOutputStream(path);
 			int read = 0;
 			while ((read = fileContent.read()) != -1) {
 				outputStream.write(read);
 			}
-
 			outputStream.flush();
 			fileContent.close();
 			outputStream.close();
+			return "images/"+fileName;
 
-			return path + File.separator + fileName;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

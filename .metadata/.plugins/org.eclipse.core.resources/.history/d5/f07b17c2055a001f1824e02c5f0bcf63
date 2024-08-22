@@ -1,6 +1,0 @@
-package com.app.vacancyportal.dao;
-
-public interface BasicDao {
-	
-
-}

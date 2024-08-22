@@ -86,7 +86,8 @@ public class UserDetailDaoImpl implements UserDetailDao {
 			session.update(userDetail);
 			transaction.commit();
 		} catch (Exception excp) {
-			System.out.println();
+			System.out.println(excp.getMessage());
+			excp.printStackTrace();
 			rollBackTransaction(transaction);
 		}
 		return updatedUserDetail;

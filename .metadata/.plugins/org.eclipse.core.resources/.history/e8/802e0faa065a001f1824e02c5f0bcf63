@@ -1,7 +1,0 @@
-package com.app.vacancyportal.dao.impl;
-
-import com.app.vacancyportal.dao.AuthenticationDao;
-
-public class AuthenticationDaoImpl implements AuthenticationDao {
-
-}

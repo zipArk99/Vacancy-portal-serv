@@ -44,7 +44,7 @@ public class UserDetail implements Serializable {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(cascade = CascadeType.REMOVE, fetch =  FetchType.EAGER)
 	@JoinColumn(name ="selected_profile_pic_id")
 	private ProfilePicture profilePicture;
 	
@@ -105,7 +105,10 @@ public class UserDetail implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 
+	
 	@Override
 	public String toString() {
 		return "UserDetail [user=" + user + ", firstName=" + firstName + ", lastName=" + lastName + ", profilePicture="

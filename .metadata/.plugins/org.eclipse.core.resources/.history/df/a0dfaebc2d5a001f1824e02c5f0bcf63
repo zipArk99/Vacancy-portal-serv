@@ -1,7 +1,0 @@
-package com.app.vacancyportal.service;
-
-public interface UserService {
-	
-	void registerUser(Register register);
-
-}

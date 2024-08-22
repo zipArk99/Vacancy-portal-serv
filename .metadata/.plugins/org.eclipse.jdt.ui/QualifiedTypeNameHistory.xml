@@ -40,7 +40,6 @@
     <fullyQualifiedTypeName name="com.app.vacancyportal.exception.UserNotFoundException"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.Fetch"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.FetchMode"/>
-    <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="javax.transaction.Transaction"/>
@@ -50,4 +49,11 @@
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDetailDao"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserDetailService"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserDetailServiceFactory"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.app.vacancywebservice.util.HibernateUtil"/>
+    <fullyQualifiedTypeName name="com.app.vacancywebservice.service.impl.HibernateUtil"/>
+    <fullyQualifiedTypeName name="com.app.vacancywebservice.entity.Vacancy"/>
+    <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 </qualifiedTypeNameHistroy>

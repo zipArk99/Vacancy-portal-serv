@@ -74,6 +74,18 @@ public class ProfilePicture  implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public int getPictureId() {
+		return pictureId;
+	}
+
+	public void setPictureId(int pictureId) {
+		this.pictureId = pictureId;
+	}
+	
+	
+	
+	
 	
 	
 

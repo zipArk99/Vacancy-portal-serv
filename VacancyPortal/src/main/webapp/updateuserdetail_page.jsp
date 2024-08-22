@@ -48,10 +48,11 @@ body, html {
 		<div class="card-body" style="background-color:green;">
 				<h5 class="card-title" style="color:white;">UserProfile</h5>
 			</div>
-
-  <img src="user.png" class="card-img-top" alt="User Image" draggable="true">
+	<img src="<%=request.getContextPath()%>/${param.profile}" class="card-img-top" alt="User Image">
 			<input type="hidden" name="email" value="${param.email}">
 				<input type="hidden" name="role" value="${param.role}">
+				<input type="hidden" name="profile" value="${param.profile}">
+				<input type="hidden" name="profId" value="${param.profId}"> 
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><b>Email:</b> <c:out  value="${param.email}"></c:out> </li>
 					
