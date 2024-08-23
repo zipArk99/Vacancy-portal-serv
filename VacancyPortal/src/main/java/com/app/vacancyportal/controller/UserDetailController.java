@@ -58,7 +58,7 @@ public class UserDetailController extends HttpServlet {
 		UUID uuid = UUID.randomUUID();
 		File folder = new File(getServletContext().getRealPath(""));
 		System.out.println(getServletContext().getRealPath("/"));
-		String path = "D:/Java Development/Vac portal v2/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
+		String path = "A:/TechForce/Vacancy-portal-serv/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
 				+ File.separator + fileName;
 		OutputStream outputStream = null;
 		InputStream fileContent = file.getInputStream();

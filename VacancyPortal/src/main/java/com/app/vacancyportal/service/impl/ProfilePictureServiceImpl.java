@@ -2,9 +2,9 @@ package com.app.vacancyportal.service.impl;
 
 import com.app.vacancyportal.dao.ProfilePictureDao;
 import com.app.vacancyportal.entity.ProfilePicture;
-import com.app.vacancyportal.service.ProfilePathService;
+import com.app.vacancyportal.service.ProfilePictureService;
 
-public class ProfilePictureServiceImpl implements ProfilePathService {
+public class ProfilePictureServiceImpl implements ProfilePictureService {
 
 	ProfilePictureDao profilePictureDao;
 
