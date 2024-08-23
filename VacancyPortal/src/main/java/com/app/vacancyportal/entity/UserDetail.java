@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -26,9 +27,7 @@ import org.hibernate.annotations.ManyToAny;
 @Table(name = "userdetail")
 public class UserDetail implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@OneToOne(cascade =CascadeType.REMOVE)
@@ -47,6 +46,9 @@ public class UserDetail implements Serializable {
 	@ManyToOne(cascade = CascadeType.REMOVE, fetch =  FetchType.EAGER)
 	@JoinColumn(name ="selected_profile_pic_id")
 	private ProfilePicture profilePicture;
+	
+	@Transient
+	private List<ProfilePicture> profilePictureList;
 	
 	@Column(name = "created_at")
 	private Date createdAt;
@@ -96,6 +98,14 @@ public class UserDetail implements Serializable {
 
 	public void setProfilePicture(ProfilePicture profilePicture) {
 		this.profilePicture = profilePicture;
+	}
+	
+	public List<ProfilePicture> getProfilePictureList() {
+		return profilePictureList;
+	}
+
+	public void setProfilePictureList(List<ProfilePicture> profilePictureList) {
+		this.profilePictureList = profilePictureList;
 	}
 
 	public User getUser() {

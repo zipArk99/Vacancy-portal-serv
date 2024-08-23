@@ -18,18 +18,8 @@
     <wsdd:parameter name="wsdlPortType" value="VacancyServiceImpl"/>
     <wsdd:parameter name="typeMappingVersion" value="1.2"/>
     <wsdd:parameter name="allowedMethods" value="fetchVacancies"/>
-    <wsdd:typeMapping qname="impl.service.vacancywebservice.app.com:>fetchVacanciesResponse"
-        type="java:com.app.vacancywebservice.service.impl.FetchVacanciesResponse"
-        encodingStyle="" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"/>
-    <wsdd:typeMapping qname="impl.service.vacancywebservice.app.com:>fetchVacancies"
-        type="java:com.app.vacancywebservice.service.impl.FetchVacancies" encodingStyle=""
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"/>
-    <wsdd:arrayMapping qname="impl.service.vacancywebservice.app.com:ArrayOf_xsd_anyType"
-        type="java:java.lang.Object[]" encodingStyle="" innerType="XMLSchema:anyType"/>
     <wsdd:operation name="fetchVacancies" qname="impl.service.vacancywebservice.app.com:fetchVacancies"
         returnQName="impl.service.vacancywebservice.app.com:fetchVacanciesReturn"
-        returnType="impl.service.vacancywebservice.app.com:ArrayOf_xsd_anyType" returnItemQName="impl.service.vacancywebservice.app.com:item"
-        soapAction=""/>
+        returnType="XMLSchema:string" soapAction=""/>
   </wsdd:service>
 </wsdd:deployment>

@@ -55,6 +55,7 @@ public class UserProfileUpdateController extends HttpServlet {
 		System.out.println("path :: " + pathInfo);
 		
 		if (!Objects.isNull(pathInfo) && pathInfo.equals("/get")) {
+			
 			req.getRequestDispatcher("/updateuserdetail_page.jsp").forward(req, resp);
 		} else {
 

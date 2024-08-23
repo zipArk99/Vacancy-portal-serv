@@ -115,6 +115,7 @@ public class UserDetailDaoImpl implements UserDetailDao {
 		try (Session session = getSession().openSession()) {
 
 			userDetail = (UserDetail) session.get(UserDetail.class, email);
+			System.out.println(userDetail.getProfilePictureList().size());
 			userDetail.getUser().setHashPassword("");
 
 		} catch (Exception e) {

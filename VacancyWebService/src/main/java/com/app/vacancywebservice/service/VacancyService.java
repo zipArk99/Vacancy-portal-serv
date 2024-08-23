@@ -7,5 +7,5 @@ import java.util.List;
 import com.app.vacancywebservice.entity.Vacancy;
 
 public interface VacancyService {
-public List<Vacancy> fetchVacancies();
+public String fetchVacancies();
 }

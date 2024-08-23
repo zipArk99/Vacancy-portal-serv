@@ -10,15 +10,10 @@ Built on Nov 07, 2023 (07:57:58 UTC)-->
    <element name="fetchVacanciesResponse">
     <complexType>
      <sequence>
-      <element name="fetchVacanciesReturn" type="impl:ArrayOf_xsd_anyType"/>
+      <element name="fetchVacanciesReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-   <complexType name="ArrayOf_xsd_anyType">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
-    </sequence>
-   </complexType>
   </schema>
  </wsdl:types>
 

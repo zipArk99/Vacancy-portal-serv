@@ -1,5 +1,7 @@
 package com.app.vacancyportal.service.impl;
 
+import java.util.List;
+
 import com.app.vacancyportal.dao.ProfilePictureDao;
 import com.app.vacancyportal.entity.ProfilePicture;
 import com.app.vacancyportal.service.ProfilePictureService;
@@ -16,6 +18,20 @@ public class ProfilePictureServiceImpl implements ProfilePictureService {
 	public ProfilePicture addProfilePicture(ProfilePicture picture) {
 		ProfilePicture profilePicture = profilePictureDao.add(picture);
 		return profilePicture;
+	}
+
+	@Override
+	public List<ProfilePicture> fetchProfilesByEmailId(String email) {
+		List<ProfilePicture> profilePictures=null;
+		try {
+
+			 profilePictures = profilePictureDao.fetchProfiles(email);
+
+		} catch (Exception excp) {
+			excp.printStackTrace();
+		}
+		return profilePictures;
+
 	}
 
 }

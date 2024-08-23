@@ -1,6 +1,10 @@
 
+<%@page import="java.io.PrintWriter"%>
+<%@page import="com.app.vacancyportal.entity.UserDetail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.app.vacancyportal.entity.ProfilePicture"%>
+<%@ page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -64,9 +68,19 @@ body, html {
 </head>
 <body>
 <body>
+	<%
+	UserDetail userDetail = (UserDetail) session.getAttribute("userDetail");
+	List<ProfilePicture> pictures = userDetail.getProfilePictureList();
+	for (ProfilePicture picture : pictures) {
+		out.print(picture.getProfilePath());
+	}%>
+
 	<%@ include file="header.jsp"%>
 	<div class="image-container">
-
+		<c:forEach var="profile"
+			items="${sessionScope.userDetail.getProfilePictureList()}">
+			<c:out value="${profile.toString()}"></c:out>
+		</c:forEach>
 		<img src="<%=request.getContextPath()%>/${param.profile}"
 			class="rounded float-left" alt="..." height="150px"
 			onclick="handleClick(1)"> <img
@@ -124,7 +138,7 @@ body, html {
 						aria-describedby="emailHelp"></li>
 
 
-					<li class="list-group-item"><b>Role:</b><c:choose>
+					<li class="list-group-item"><b>Role:</b> <c:choose>
 							<c:when
 								test="${sessionScope.userDetail.getUser().getRoleId()==1}">
 								<input type="text" name="role" class="form-control" id="fnameId"

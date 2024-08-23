@@ -7,6 +7,7 @@ import java.util.Date;
 //JPA Imports
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ import lombok.Builder;
 
 @Entity
 @Table(name = "profilepicpath")
-public class ProfilePicture  implements Serializable{
+public class ProfilePicture implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +32,8 @@ public class ProfilePicture  implements Serializable{
 	@Column(name = "profile_path")
 	private String profilePath;
 
-	@ManyToOne
-	@JoinColumn(name ="email_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "email_id")
 	private User user;
 
 	@Column(name = "created_at")
@@ -56,8 +57,6 @@ public class ProfilePicture  implements Serializable{
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	
-	
 
 	public Date getUpdatedAt() {
 		return updatedAt;
@@ -82,10 +81,12 @@ public class ProfilePicture  implements Serializable{
 	public void setPictureId(int pictureId) {
 		this.pictureId = pictureId;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "ProfilePicture [pictureId=" + pictureId + ", profilePath=" + profilePath + ", user=" + user
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
 	
 	
 
