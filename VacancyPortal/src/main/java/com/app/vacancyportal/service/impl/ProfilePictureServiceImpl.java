@@ -3,6 +3,7 @@ package com.app.vacancyportal.service.impl;
 import java.util.List;
 
 import com.app.vacancyportal.dao.ProfilePictureDao;
+import com.app.vacancyportal.dto.ProfilePicResponse;
 import com.app.vacancyportal.entity.ProfilePicture;
 import com.app.vacancyportal.service.ProfilePictureService;
 
@@ -21,8 +22,8 @@ public class ProfilePictureServiceImpl implements ProfilePictureService {
 	}
 
 	@Override
-	public List<ProfilePicture> fetchProfilesByEmailId(String email) {
-		List<ProfilePicture> profilePictures=null;
+	public List<ProfilePicResponse> fetchProfilesByEmailId(String email) {
+		List<ProfilePicResponse> profilePictures=null;
 		try {
 
 			 profilePictures = profilePictureDao.fetchProfiles(email);

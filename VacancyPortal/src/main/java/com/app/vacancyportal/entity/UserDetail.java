@@ -23,6 +23,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.ManyToAny;
 
+import com.app.vacancyportal.dto.ProfilePicResponse;
+
 @Entity
 @Table(name = "userdetail")
 public class UserDetail implements Serializable {
@@ -48,7 +50,7 @@ public class UserDetail implements Serializable {
 	private ProfilePicture profilePicture;
 	
 	@Transient
-	private List<ProfilePicture> profilePictureList;
+	private List<ProfilePicResponse> profilePictureList;
 	
 	@Column(name = "created_at")
 	private Date createdAt;
@@ -100,11 +102,13 @@ public class UserDetail implements Serializable {
 		this.profilePicture = profilePicture;
 	}
 	
-	public List<ProfilePicture> getProfilePictureList() {
+	
+
+	public List<ProfilePicResponse> getProfilePictureList() {
 		return profilePictureList;
 	}
 
-	public void setProfilePictureList(List<ProfilePicture> profilePictureList) {
+	public void setProfilePictureList(List<ProfilePicResponse> profilePictureList) {
 		this.profilePictureList = profilePictureList;
 	}
 

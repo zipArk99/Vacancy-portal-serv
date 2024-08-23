@@ -1,6 +1,7 @@
 package com.app.vacancyportal.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.app.vacancyportal.dto.ProfilePicResponse;
 import com.app.vacancyportal.entity.ProfilePicture;
 import com.app.vacancyportal.entity.User;
 import com.app.vacancyportal.entity.UserDetail;
@@ -45,10 +47,12 @@ public class UserProfileController extends HttpServlet {
 			System.out.println("called from fetch user");
 			User user = (User) session.getAttribute("user");
 			userDetail = userDetailService.fetchUserByEmailId(user.getEmail());
-			List<ProfilePicture> pictures = profilePictureService.fetchProfilesByEmailId(user.getEmail());
+			List<ProfilePicResponse> pictures = profilePictureService.fetchProfilesByEmailId(user.getEmail());
 			userDetail.setProfilePictureList(pictures);
-			userDetail.getProfilePictureList();
 			session.setAttribute("userDetail", userDetail);
+			UserDetail userD = (UserDetail) session.getAttribute("userDetail");
+			System.out.println(userD.getProfilePictureList().get(0).getProfilePath());
+			
 		}
 		System.out.println("CALLED USER PROFILE");
 		req.setAttribute("email", userDetail.getUser().getEmail());

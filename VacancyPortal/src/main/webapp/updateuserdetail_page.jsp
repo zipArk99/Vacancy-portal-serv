@@ -6,6 +6,7 @@
 <%@ page import="com.app.vacancyportal.entity.ProfilePicture"%>
 <%@ page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,28 +69,16 @@ body, html {
 </head>
 <body>
 <body>
-	<%
-	UserDetail userDetail = (UserDetail) session.getAttribute("userDetail");
-	List<ProfilePicture> pictures = userDetail.getProfilePictureList();
-	for (ProfilePicture picture : pictures) {
-		out.print(picture.getProfilePath());
-	}%>
+	
 
 	<%@ include file="header.jsp"%>
 	<div class="image-container">
 		<c:forEach var="profile"
 			items="${sessionScope.userDetail.getProfilePictureList()}">
-			<c:out value="${profile.toString()}"></c:out>
+			<img src="<%=request.getContextPath()%>/${profile.getProfilePath()}"
+			class="rounded float-left" alt="Profile Pic" height="150px"
+			onclick="handleClick(1)">
 		</c:forEach>
-		<img src="<%=request.getContextPath()%>/${param.profile}"
-			class="rounded float-left" alt="..." height="150px"
-			onclick="handleClick(1)"> <img
-			src="<%=request.getContextPath()%>/${param.profile}"
-			class="rounded float-right" alt="..." height="150px"
-			onclick="handleClick(2)"> <img
-			src="<%=request.getContextPath()%>/${param.profile}"
-			class="rounded float-right" alt="..." height="150px"
-			onclick="handleClick(3)">
 	</div>
 	<form
 		action="<c:choose>

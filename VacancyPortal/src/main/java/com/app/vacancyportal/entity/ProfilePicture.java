@@ -26,7 +26,7 @@ public class ProfilePicture implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pic_id")
+	@Column(name = "pic_id")	
 	private int pictureId;
 
 	@Column(name = "profile_path")
