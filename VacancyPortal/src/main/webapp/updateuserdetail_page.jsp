@@ -95,45 +95,68 @@ body, html {
 				<div class="card-body" style="background-color: green;">
 					<h5 class="card-title" style="color: white;">UserProfile</h5>
 				</div>
-				<img src="<%=request.getContextPath()%>/${param.profile}"
+				<img
+					src="<%=request.getContextPath()%>/${sessionScope.userDetail.getProfilePicture().getProfilePath()}"
 					class="card-img-top" alt="User Image"> <input type="hidden"
-					name="email" value="${param.email}"> <input type="hidden"
-					name="role" value="${param.role}"> <input type="hidden"
-					name="profile" value="${param.profile}"> <input
-					type="hidden" name="profId" value="${param.profId}">
+					name="email"
+					value="${sessionScope.userDetail.getUser().getEmail()}"> <input
+					type="hidden" name="profile"
+					value="${sessionScope.userDetail.getProfilePicture().getProfilePath()}">
+				<input type="hidden" name="profId"
+					value="${sessionScope.userDetail.getProfilePicture().getPictureId()}">
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><b>Email:</b> <c:out
-							value="${param.email}"></c:out></li>
+
+
+					<li class="list-group-item"><b>Email :</b> <input type="text"
+						name="email" class="form-control" id="fnameId"
+						value="${sessionScope.userDetail.getUser().getEmail()}"
+						aria-describedby="emailHelp" disabled="disabled"></li>
 
 					<li class="list-group-item"><b>First Name:</b> <input
 						type="text" name="fname" class="form-control" id="fnameId"
-						value="${param.fname}" aria-describedby="emailHelp"></li>
+						value="${sessionScope.userDetail.getFirstName()}"
+						aria-describedby="emailHelp"></li>
 
 
 					<li class="list-group-item"><b>Last Name:</b> <input
 						type="text" name="lname" class="form-control" id="fnameId"
-						value="${param.lname}" aria-describedby="emailHelp"></li>
+						value="${sessionScope.userDetail.getLastName()}"
+						aria-describedby="emailHelp"></li>
 
 
-					<li class="list-group-item"><b>Role:</b> <c:choose>
-							<c:when test="${param.role==1}">
-								<c:out value="ADMIN"></c:out>
+					<li class="list-group-item"><b>Role:</b><c:choose>
+							<c:when
+								test="${sessionScope.userDetail.getUser().getRoleId()==1}">
+								<input type="text" name="role" class="form-control" id="fnameId"
+									value="ADMIN" aria-describedby="emailHelp" disabled="disabled">
 							</c:when>
 							<c:otherwise>
-								<c:out value="NORMAL"></c:out>
+								<input type="text" name="role" class="form-control" id="fnameId"
+									value="NORMAL" aria-describedby="emailHelp" disabled="disabled">
 							</c:otherwise>
 						</c:choose></li>
 				</ul>
 				<div class="card-body">
 					<input type="submit" class="btn btn-primary" value="Update">
 				</div>
-				<form action="#" method="POST">
-					<input type="submit" class="btn btn-primary"
-						value="Upload New Image">
-				</form>
+
 			</div>
 		</div>
 	</form>
+
+	<div class="card" style="width: 15rem;"
+		style=" display:flex; justify-content:center;
+	align-items: center;">
+		<form action="/VacancyPortal/portal/userprofile/add" method="POST"
+			enctype="multipart/form-data">
+			<input type="hidden" name="email" value="${param.email}"> <input
+				type="file" name="profile" class="form-control" id="profileId"
+				value="${param.profile}" aria-describedby="emailHelp"
+				style="padding: 10px;"> <input type="submit"
+				class="btn btn-primary" value="Upload New Profile">
+		</form>
+
+	</div>
 	<script>
 		function handleClick(imageId) {
 			// Perform the desired action here

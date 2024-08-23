@@ -14,8 +14,8 @@ public class ProfilePictureServiceImpl implements ProfilePictureService {
 
 	@Override
 	public ProfilePicture addProfilePicture(ProfilePicture picture) {
-		// TODO Auto-generated method stub
-		return null;
+		ProfilePicture profilePicture = profilePictureDao.add(picture);
+		return profilePicture;
 	}
 
 }

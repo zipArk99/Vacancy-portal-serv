@@ -67,7 +67,7 @@
 
 	<servlet-mapping>
 		<servlet-name>updateprofile</servlet-name>
-		<url-pattern>/portal/updateprofile</url-pattern>
+		<url-pattern>/portal/updateprofile/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -98,6 +98,16 @@
 	<servlet-mapping>
 	<servlet-name>logout</servlet-name>
 	<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>addprofile</servlet-name>
+	<servlet-class>com.app.vacancyportal.controller.ProfilePictureController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>addprofile</servlet-name>
+	<url-pattern>/portal/userprofile/add</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

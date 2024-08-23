@@ -43,20 +43,33 @@ public class UserProfileUpdateController extends HttpServlet {
 		return userDetail;
 
 	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("print email::"+req.getAttribute("email"));
+		doPost(req, resp);
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		UserDetail userDetail = setUserDetailsWithRequestParam(req);
-		UserDetail updatedUserDetail = userDetailService.updateUserDetail(userDetail);
-
-		if (!Objects.isNull(updatedUserDetail)) {
-			HttpSession session = req.getSession(false);
-			session.setAttribute("userDetail", updatedUserDetail);
-			resp.sendRedirect(req.getContextPath() + "/portal/userprofile");
+		String pathInfo = req.getPathInfo();
+		System.out.println("path :: " + pathInfo);
+		
+		if (!Objects.isNull(pathInfo) && pathInfo.equals("/get")) {
+			req.getRequestDispatcher("/updateuserdetail_page.jsp").forward(req, resp);
 		} else {
 
-		}
+			UserDetail userDetail = setUserDetailsWithRequestParam(req);
+			UserDetail updatedUserDetail = userDetailService.updateUserDetail(userDetail);
 
+			if (!Objects.isNull(updatedUserDetail)) {
+				HttpSession session = req.getSession(false);
+				session.setAttribute("userDetail", updatedUserDetail);
+				resp.sendRedirect(req.getContextPath() + "/portal/userprofile");
+			} else {
+
+			}
+
+		}
 	}
 
 }

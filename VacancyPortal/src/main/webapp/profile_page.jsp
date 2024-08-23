@@ -1,3 +1,4 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -64,8 +65,8 @@ body, html {
 
 
 			<div class="card-body">
-				<form action="/VacancyPortal/updateuserdetail_page.jsp"
-					method="POST">
+				<form action="/VacancyPortal/portal/updateprofile/get"
+					method="POST" >
 					<input type="hidden" name="email" value="${requestScope.email}">
 					<input type="hidden" name="fname" value="${requestScope.fname }">
 					<input type="hidden" name="lname" value="${requestScope.lname}">

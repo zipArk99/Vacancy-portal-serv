@@ -25,6 +25,7 @@ import com.app.vacancyportal.entity.UserDetail;
 import com.app.vacancyportal.exception.UserNotFoundException;
 import com.app.vacancyportal.factory.UserDetailServiceFactory;
 import com.app.vacancyportal.service.UserDetailService;
+import com.app.vacancyportal.util.FileUploaderUtil;
 import com.app.vacancyportal.util.formvalidation.BasicFormValidation;
 
 @MultipartConfig
@@ -54,41 +55,12 @@ public class UserDetailController extends HttpServlet {
 
 	}
 
-	private String uploadProfile(Part file, String fileName, String userEmail) throws IOException {
-		UUID uuid = UUID.randomUUID();
-		File folder = new File(getServletContext().getRealPath(""));
-		System.out.println(getServletContext().getRealPath("/"));
-		String path = "A:/TechForce/Vacancy-portal-serv/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
-				+ File.separator + fileName;
-		OutputStream outputStream = null;
-		InputStream fileContent = file.getInputStream();
-		/*
-		 * if (!folder.exists()) { folder.mkdir(); }
-		 */
-		try {
-			outputStream = new FileOutputStream(path);
-			int read = 0;
-			while ((read = fileContent.read()) != -1) {
-				outputStream.write(read);
-			}
-			outputStream.flush();
-			fileContent.close();
-			outputStream.close();
-			return "images/"+fileName;
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return "";
-
-	}
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UserDetail userDetail = setUserDetailsWithRequestParam(req);
 		Part file = req.getPart("profile");
 		String fileName = file.getSubmittedFileName();
-		String uploadedFilePath = uploadProfile(file, fileName, userDetail.getUser().getEmail());
+		String uploadedFilePath = FileUploaderUtil.uploadFile(file, fileName, userDetail.getUser().getEmail());
 		ProfilePicture profilePicture = new ProfilePicture();
 		profilePicture.setProfilePath(uploadedFilePath);
 		userDetail.setProfilePicture(profilePicture);
