@@ -12,5 +12,6 @@ public interface UserDetailService {
 	public List<UserDetail> fetchAllUsers();
 	UserDetail addUserDetail(UserDetail userDetail) throws UserNotFoundException;
 	UserDetail updateUserDetail(UserDetail userDetail);
+	public boolean changeUserProfile(UserDetail userDetail, int id);
 
 }

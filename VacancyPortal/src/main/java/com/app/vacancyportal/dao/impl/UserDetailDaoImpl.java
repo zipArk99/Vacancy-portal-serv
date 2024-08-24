@@ -47,17 +47,17 @@ public class UserDetailDaoImpl implements UserDetailDao {
 		UserDetail newUserDetail = null;
 		try (Session session = getSession().openSession()) {
 			transaction = session.beginTransaction();
-			
-			//fetching user by email
+
+			// fetching user by email
 			User user = userDao.fetchUserByEmailId(userDetail.getUser().getEmail());
-			
-			//saving profile picture
+
+			// saving profile picture
 			ProfilePicture profilePicture = new ProfilePicture();
 			profilePicture.setUser(user);
 			profilePicture.setProfilePath(userDetail.getProfilePicture().getProfilePath());
 			ProfilePicture uploadedProfilePicture = profilePictureDao.add(profilePicture);
-			
-			//saving user detail
+
+			// saving user detail
 			userDetail.setUser(user);
 			userDetail.setProfilePicture(uploadedProfilePicture);
 			userDetail.getProfilePicture().setUser(user);
@@ -122,6 +122,21 @@ public class UserDetailDaoImpl implements UserDetailDao {
 
 		}
 		return userDetail;
+	}
+
+	@Override
+	public boolean updateProfile(UserDetail userDetail, int id) {
+		Transaction transaction = null;
+		try (Session session = getSession().openSession()) {
+			transaction = session.beginTransaction();
+			session.update(userDetail);
+		
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

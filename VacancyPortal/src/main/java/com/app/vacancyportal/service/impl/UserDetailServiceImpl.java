@@ -47,4 +47,9 @@ public class UserDetailServiceImpl implements UserDetailService {
 		return usersDetail;
 	}
 
+	@Override
+	public boolean changeUserProfile(UserDetail userDetail, int id) {
+		return userDetailDao.updateProfile(userDetail,id);
+	}
+
 }

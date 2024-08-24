@@ -1,3 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/app/vacancywebservice/entity/Vacancy.java=UTF-8
+encoding//src/main/java/com/app/vacancywebservice/service/impl/VacancyServiceImpl.java=UTF-8
+encoding//src/main/java/com/app/vacancywebservice/service/impl/VacancyServiceImplService.java=UTF-8
+encoding//src/main/java/com/app/vacancywebservice/service/impl/VacancyServiceImplServiceLocator.java=UTF-8
+encoding//src/main/java/com/app/vacancywebservice/service/impl/VacancyServiceImplSoapBindingStub.java=UTF-8
 encoding/<project>=UTF-8

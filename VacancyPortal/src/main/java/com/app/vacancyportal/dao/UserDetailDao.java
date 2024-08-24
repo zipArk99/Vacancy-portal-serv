@@ -12,4 +12,6 @@ public interface UserDetailDao {
 	public List<UserDetail> fetchUsers();
 
 	public UserDetail fetchUser(String email);
+	
+	public boolean updateProfile(UserDetail userDetail, int id);
 }
