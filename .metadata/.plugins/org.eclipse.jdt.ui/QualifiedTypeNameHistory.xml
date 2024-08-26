@@ -49,11 +49,12 @@
     <fullyQualifiedTypeName name="com.app.vacancyportal.dao.UserDetailDao"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.service.UserDetailService"/>
     <fullyQualifiedTypeName name="com.app.vacancyportal.factory.UserDetailServiceFactory"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.app.vacancywebservice.util.HibernateUtil"/>
     <fullyQualifiedTypeName name="com.app.vacancywebservice.service.impl.HibernateUtil"/>
     <fullyQualifiedTypeName name="com.app.vacancywebservice.entity.Vacancy"/>
     <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.app.vacancyportal.dto.ProfilePicResponse"/>
 </qualifiedTypeNameHistroy>

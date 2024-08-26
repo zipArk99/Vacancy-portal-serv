@@ -144,13 +144,15 @@ body {
 								</p>
 							</div>
 							<div class="card-footer">
-								<form action="/VacancyPortal/updateuserdetail_page.jsp" method="POST">
+								<form action="/VacancyPortal/portal/usermanagement/edit" method="POST">
 									<input type="hidden" name="isAdmin" value = "true"> 
 									<input type="hidden" name="email"
 										value="${user.getUser().email}" /> <input type="hidden"
 										name="fname" value="${user.firstName}" /> <input
 										type="hidden" name="lname" value="${user.lastName}" /> <input
 										type="hidden" name="role" value="${user.getUser().roleId}" />
+										<input type="hidden" name="profilePath" value="${user.getProfilePicture().getProfilePath()}">
+									<input type="hidden" name="profileId" value="${user.getProfilePicture().getPictureId()}">
 									<button class="btn bg-orange has-icon btn-block" type="submit"
 										style="background-color: orange;">
 										<i class="material-icons">Edit User</i>

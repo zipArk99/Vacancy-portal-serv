@@ -68,15 +68,16 @@ body, html {
 </head>
 <body>
 <body>
-	
+
 
 	<%@ include file="header.jsp"%>
 	<div class="image-container">
-		<c:forEach var="profile"
-			items="${sessionScope.userDetail.getProfilePictureList()}">
+		<c:forEach var="profile" items="${sessionScope.userManagment.getProfilePictureList()}">
+			<c:if  test="${profile.getPictureId() != sessionScope.userManagment.getProfilePicture().getPictureId()}">
 			<img src="<%=request.getContextPath()%>/${profile.getProfilePath()}"
-			class="rounded float-left" alt="Profile Pic" height="150px"
-			onclick="handleClick(1)">
+				class="rounded float-left" alt="Profile Pic" height="150px"
+				onclick="handleClick(${profile.getPictureId()},'${profile.getProfilePath()}')">
+			</c:if>
 		</c:forEach>
 	</div>
 	<form
@@ -101,8 +102,8 @@ body, html {
 					src="<%=request.getContextPath()%>/${sessionScope.userManagment.getProfilePicture().getProfilePath()}"
 					class="card-img-top" alt="User Image"> <input type="hidden"
 					name="email"
-					value="${sessionScope.userManagment.getUser().getEmail()}"> <input
-					type="hidden" name="profilePath"
+					value="${sessionScope.userManagment.getUser().getEmail()}">
+				<input type="hidden" name="profilePath"
 					value="${sessionScope.userManagment.getProfilePicture().getProfilePath()}">
 				<input type="hidden" name="profileId"
 					value="${sessionScope.userManagment.getProfilePicture().getPictureId()}">
@@ -125,7 +126,7 @@ body, html {
 						value="${sessionScope.userManagment.getLastName()}"
 						aria-describedby="emailHelp"></li>
 
-
+	
 					<li class="list-group-item"><b>Role:</b> <c:choose>
 							<c:when
 								test="${sessionScope.userManagment.getUser().getRoleId()==1}">
@@ -151,7 +152,7 @@ body, html {
 	align-items: center;">
 		<form action="/VacancyPortal/portal/userprofile/add" method="POST"
 			enctype="multipart/form-data">
-			<input type="hidden" name="email" value="${param.email}"> <input
+			<input type="hidden" name="email" value="${sessionScope.userManagment.getUser().getEmail()}"> <input
 				type="file" name="profile" class="form-control" id="profileId"
 				value="${param.profile}" aria-describedby="emailHelp"
 				style="padding: 10px;"> <input type="submit"
@@ -160,10 +161,28 @@ body, html {
 
 	</div>
 	<script>
-		function handleClick(imageId) {
-			// Perform the desired action here
-			alert("Image " + imageId + " clicked!");
-			// You can also make AJAX calls, navigate to a different page, etc.
+	function handleClick(imageId, profilePath) {
+		  // Prompt for confirmation before sending data
+		  if (confirm("Are you sure you want to update your profile picture?")) {
+		    var xhr = new XMLHttpRequest(); // Consider using fetch for modern browsers
+
+		    // Open a POST request to the servlet endpoint
+		    xhr.open("POST", "/VacancyPortal/portal/updateprofile/updatepic", true);
+
+		    // Set the content type header for form-encoded data
+		    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+		    // Construct the data payload with encoded parameters
+		    var data = "imageId=" + encodeURIComponent(imageId) + "&profilePath=" + encodeURIComponent(profilePath);
+
+		    // Send the request with the data
+		    xhr.send(data);
+
+		  
+		  } else {
+		    // User canceled the update
+		    console.log("Profile picture update canceled.");
+		  }
 		}
 	</script>
 </body>

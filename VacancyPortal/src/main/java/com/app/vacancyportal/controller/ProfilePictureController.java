@@ -47,7 +47,7 @@ public class ProfilePictureController extends HttpServlet {
 		userDetail.getProfilePictureList()
 				.add(new ProfilePicResponse(respPicture.getProfilePath(), respPicture.getPictureId()));
 		session.setAttribute("userDetail", userDetail);
-		resp.sendRedirect("/VacancyPortal/updateuserdetail_page.jsp");
+		resp.sendRedirect(req.getContextPath()+"/portal/updateprofile/get");
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -29,7 +30,7 @@ body, html {
 }
 
 .card-img-top {
-	height: 70px;
+	height: 150px;
 	width: auto;
 	s max-width: 100%;
 	display: block;
@@ -44,7 +45,7 @@ body, html {
 			<div class="card-body" style="background-color: green;">
 				<h5 class="card-title" style="color: white;">UserProfile</h5>
 			</div>
-			<img src="<%=request.getContextPath()%>/${requestScope.profile}">
+			<img src="<%=request.getContextPath()%>/${requestScope.profile}"class="card-img-top" alt="User Image">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><b>Email:</b> <c:out
 						value="${requestScope.email}"></c:out></li>
@@ -64,8 +65,8 @@ body, html {
 
 
 			<div class="card-body">
-				<form action="/VacancyPortal/updateuserdetail_page.jsp"
-					method="POST">
+				<form action="/VacancyPortal/portal/updateprofile/get"
+					method="POST" >
 					<input type="hidden" name="email" value="${requestScope.email}">
 					<input type="hidden" name="fname" value="${requestScope.fname }">
 					<input type="hidden" name="lname" value="${requestScope.lname}">

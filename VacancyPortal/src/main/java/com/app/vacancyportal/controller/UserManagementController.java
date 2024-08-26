@@ -35,16 +35,26 @@ public class UserManagementController extends HttpServlet {
 
 	private UserDetail setUserDetailsWithRequestParam(HttpServletRequest req) {
 		UserDetail userDetail = new UserDetail();
+
+		// setting user detail
 		userDetail.setFirstName(req.getParameter("fname"));
 		userDetail.setLastName(req.getParameter("lname"));
 
+		// setting user profile picture
 		ProfilePicture profilePicture = new ProfilePicture();
 		profilePicture.setPictureId(Integer.parseInt(req.getParameter("profileId")));
 		profilePicture.setProfilePath(req.getParameter("profilePath"));
 
+		// setting user info
 		User user = new User();
 		user.setEmail(req.getParameter("email"));
 
+		List<ProfilePicResponse> pictures = profilePictureService.fetchProfilesByEmailId(user.getEmail());
+
+		
+		
+		//setting user, profile picture and profile picture list to userDetail 
+		userDetail.setProfilePictureList(pictures);
 		userDetail.setUser(user);
 		userDetail.setProfilePicture(profilePicture);
 		return userDetail;
@@ -57,6 +67,7 @@ public class UserManagementController extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		req.setAttribute("usersDetail", usersDetail);
+
 		req.getRequestDispatcher("/usermanagement_page.jsp").forward(req, resp);
 	}
 

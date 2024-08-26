@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
+ss
 <div style="width:30%; margin: auto; background-color:#aed6f1; padding:20px;">
 <form action="/VacancyPortal/user" method="POST">
 <h3> <span style="color: #145a32"><b>V</b>acancy</span><span style="color:#d35400;"><b>X</b></span> Registration</h3>

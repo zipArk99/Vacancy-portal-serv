@@ -13,7 +13,7 @@
 	
 		public static String uploadFile(Part file, String fileName, String userEmail) throws IOException {
 			UUID uuid = UUID.randomUUID();
-			String path = "D:/Java Development/Vac portal V3/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
+			String path = "A:/TechForce/Vacancy-portal-serv/VacancyPortal/src/main/webapp/images"
 					+ File.separator + fileName;
 			OutputStream outputStream = null;
 			InputStream fileContent = file.getInputStream();

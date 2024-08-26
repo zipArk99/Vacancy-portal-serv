@@ -35,7 +35,7 @@
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath() + "/portal/usermanagement"%>">User
 						Management</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Vacancies</a>
+				<li class="nav-item"><a class="nav-link" href="/VacancyPortal/portal/vacancy">Vacancies</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath() + "/logout"%>"

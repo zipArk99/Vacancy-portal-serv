@@ -37,7 +37,12 @@ public class ChangeProfilePicController extends HttpServlet {
 			boolean b = userDetailService.changeUserProfile(userDetail, profileId);
 			if (b) {
 				session.setAttribute("userDetail", userDetail);
+				resp.sendRedirect(req.getContextPath()+"portal/updateprofile/get");
 			}
+		}else {
+			
+			session.invalidate();
+			//redirect to login page
 		}
 	}
 

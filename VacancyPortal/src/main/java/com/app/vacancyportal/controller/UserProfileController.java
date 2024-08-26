@@ -50,8 +50,6 @@ public class UserProfileController extends HttpServlet {
 			List<ProfilePicResponse> pictures = profilePictureService.fetchProfilesByEmailId(user.getEmail());
 			userDetail.setProfilePictureList(pictures);
 			session.setAttribute("userDetail", userDetail);
-			UserDetail userD = (UserDetail) session.getAttribute("userDetail");
-			System.out.println(userD.getProfilePictureList().get(0).getProfilePath());
 			
 		}
 		System.out.println("CALLED USER PROFILE");
@@ -62,6 +60,8 @@ public class UserProfileController extends HttpServlet {
 		req.setAttribute("profileId", userDetail.getProfilePicture().getPictureId());
 		req.setAttribute("profile", userDetail.getProfilePicture().getProfilePath());
 		req.getRequestDispatcher("/profile_page.jsp").forward(req, resp);
+		//userDetail.setProfilePictureList(new ArrayList<>());
+		//session.setAttribute("userDetail",userDetail);
 
 	}
 

@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.app.vacancyportal.controller.UpdateUserDetailController;
 import com.app.vacancyportal.dao.ProfilePictureDao;
 import com.app.vacancyportal.dao.UserDao;
 import com.app.vacancyportal.dao.UserDetailDao;
